@@ -11,5 +11,5 @@ const cargarSelect = (select, tipos)=> {
 }
 
 export{
-    tipos,    cargarSelect
+    tipos,cargarSelect
 }

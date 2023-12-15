@@ -151,3 +151,18 @@ td:hover{
         display: none;
     }
 }
+
+#divChart{
+    width: 80%; 
+    margin: auto;
+}
+
+#myChart{
+    background-color: rgba(255, 255, 255, 0.438);
+
+}
+
+#section-id-fecha{
+    background-color: rgba(255, 255, 255, 0.438);
+
+}

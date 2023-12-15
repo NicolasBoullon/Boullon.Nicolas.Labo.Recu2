@@ -1,0 +1,76 @@
+{
+  "monstruos": [
+    {
+      "id": 3,
+      "nombre": "Hombre Lobo",
+      "tipo": "Hombre Lobo",
+      "alias": "Garra Nocturna",
+      "miedo": 80,
+      "defensa": "Plata"
+    },
+    {
+      "id": 4,
+      "nombre": "Fantasma",
+      "tipo": "Bruja",
+      "alias": "Susurro",
+      "miedo": 60,
+      "defensa": "Crucifijo"
+    },
+    {
+      "id": 5,
+      "nombre": "Bruja",
+      "tipo": "Bruja",
+      "alias": "Hechicera",
+      "miedo": 85,
+      "defensa": "Poción"
+    },
+    {
+      "id": 7,
+      "nombre": "Vampiro",
+      "tipo": "Vampiro",
+      "alias": "Nocturno",
+      "miedo": 95,
+      "defensa": "Plata"
+    },
+    {
+      "id": 8,
+      "nombre": "Zombie",
+      "tipo": "Zombie",
+      "alias": "Decompositor",
+      "miedo": 70,
+      "defensa": "Crucifijo"
+    },
+    {
+      "id": 9,
+      "nombre": "Hada Malévola",
+      "tipo": "Bruja",
+      "alias": "Maleficia",
+      "miedo": 38,
+      "defensa": "Estaca"
+    },
+    {
+      "id": 10,
+      "nombre": "Fuego Fatuo",
+      "tipo": "Zombie",
+      "alias": "Quemador",
+      "miedo": 23,
+      "defensa": "Pocion"
+    },
+    {
+      "id": 1702565357836,
+      "nombre": "Nuevo",
+      "tipo": "Vampiro",
+      "alias": "Nuevo",
+      "miedo": 71,
+      "defensa": "Crucifijo"
+    },
+    {
+      "id": 1702594616486,
+      "nombre": "Dracula",
+      "tipo": "Vampiro",
+      "alias": "Dientes",
+      "miedo": 77,
+      "defensa": "Estaca"
+    }
+  ]
+}

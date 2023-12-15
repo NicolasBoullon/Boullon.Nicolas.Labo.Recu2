@@ -4,9 +4,8 @@ import { tipos,cargarSelect} from "./select.js";
 import {getMonstruos,postMonstruo,updateMonstruo} from "./ajax.js";
 import {deleteMonstruo} from "./axios.js";
 
-
+// const ctx = document.getElementById('myChart').getContext('2d');
 const loader = document.querySelector("#loader");
-
 const select = document.getElementById("select-tipo");
 const selectFiltro = document.getElementById("filtro-tipo");
 const $filtroTipos = document.getElementById("section-filtrado");
@@ -182,6 +181,15 @@ const cargarTablaLocal = () =>{
 
 cargarTablaLocal();
 
+const cargarLocalStorageCharts = (id) =>{
+
+    const idMasVisitados = JSON.parse(localStorage.getItem("idClickeados")) || [];
+    idMasVisitados.push(id);
+    actualizarStorage("idClickeados",idMasVisitados);
+}
+
+
+
 
 const $botonGuardar = document.getElementById("botonGuardar");
 const $botonCancelar = document.getElementById("botonCancelar");
@@ -193,9 +201,63 @@ window.addEventListener("click", async (e)=>{
         $botonGuardar.value = "Modificar";
         const id = e.target.parentElement.dataset.id;
 
+        cargarLocalStorageCharts(id);
         const selectedMonstruo = monstruos.find((Monstruo)=> Monstruo.id == id);
    
         cargarFormMonstruo($formulario,selectedMonstruo);
+
+        const $idClickeados = JSON.parse(localStorage.getItem("idClickeados")) || [];
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+
+
+        if (window.myChart instanceof Chart) {
+            window.myChart.destroy();
+        }
+        const idFrequencies = $idClickeados.reduce((acc, id) => {
+            acc[id] = (acc[id] || 0) + 1;
+            return acc;
+        }, {});
+
+        const sortedFrequencies = Object.entries(idFrequencies)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 3);
+
+        const top3IDs = sortedFrequencies.map(([id]) => id);
+        const top3Frequencies = sortedFrequencies.map(([_, frequency]) => frequency);
+
+        const $id1 = document.getElementById("id1");
+        const $id2 = document.getElementById("id2");
+        const $id3 = document.getElementById("id3");
+        $id1.value = top3IDs[0]; 
+        $id2.value = top3IDs[1]; 
+        $id3.value = top3IDs[2];
+
+        const data = {
+            labels: top3IDs,
+            datasets: [{
+                label: 'Frecuencia de ID',
+                data: top3Frequencies,
+                backgroundColor: ['red', 'orange', 'yellow'],
+                borderColor: ['red', 'orange', 'yellow'],
+                borderWidth: 1
+            }]
+        };
+
+        const options = {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+
+        window.myChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: options
+        });
     }
     else if(e.target.matches("input[value='Eliminar']"))
     {   
@@ -223,7 +285,7 @@ if(monstruos.length) actualizarTabla($seccionTabla,monstruos);
 
 
 
-$formulario.addEventListener("submit",   (e)=>{    
+$formulario.addEventListener("submit",  (e)=>{    
     e.preventDefault();
     
     const {txtId,txtNombre, txtAlias, slcTipo, rngMiedo, rdoDefensa} = $formulario;
@@ -241,8 +303,9 @@ $formulario.addEventListener("submit",   (e)=>{
                 txtAlias.value,
                 parseInt(rngMiedo.value),
                 rdoDefensa.value,
-
                 );
+
+                // newMonsrtuo.fechaCreacion = Date.now();
                  postMonstruo(newMonstruo);
                  cargarTablaLocal();
                 // cargarTablaLocal();
@@ -351,3 +414,63 @@ function obtenerValoresChecked() {
     return valores;
 }
 
+const cargarCanvas = () =>{
+
+    const $idClickeados = JSON.parse(localStorage.getItem("idClickeados")) || [];
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+
+    if (window.myChart instanceof Chart) {
+        window.myChart.destroy();
+    }
+    const idFrequencies = $idClickeados.reduce((acc, id) => {
+        acc[id] = (acc[id] || 0) + 1;
+        return acc;
+    }, {});
+
+    const sortedFrequencies = Object.entries(idFrequencies)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3);
+
+    const top3IDs = sortedFrequencies.map(([id]) => id);
+    const top3Frequencies = sortedFrequencies.map(([_, frequency]) => frequency);
+
+    const $id1 = document.getElementById("id1");
+    const $id2 = document.getElementById("id2");
+    const $id3 = document.getElementById("id3");
+    $id1.value = top3IDs[0]; 
+    $id2.value = top3IDs[1]; 
+    $id3.value = top3IDs[2];
+    // const $fecha1 = document.getElementById("fecha1");
+    // const $fecha2 = document.getElementById("fecha2");
+    // const $fecha3 = document.getElementById("fecha3");
+    
+
+    const data = {
+        labels: top3IDs,
+        datasets: [{
+            label: 'Frecuencia de ID',
+            data: top3Frequencies,
+            backgroundColor: ['red', 'orange', 'yellow'],
+            borderColor: ['red', 'orange', 'yellow'],
+            borderWidth: 1
+        }]
+    };
+
+    const options = {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    };
+
+
+    window.myChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: options
+    });
+}
+
+cargarCanvas();
