@@ -1,0 +1,153 @@
+label{
+    margin: 5px;
+}
+/* 
+
+#rdbPocion{
+    margin-left: -12px;
+} */
+
+#navbar-m{
+    background-color: rgb(243, 137, 30);
+    margin-bottom: 200px;
+}
+
+#titlte-home{
+    margin-left: 170px;
+}
+
+.bodyHome{
+    background-image: url(../assets/Halloween\ Fondo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+#container-form{
+    color: rgb(0, 0, 0);
+    display: flex;
+    border-radius: 5px;
+    /* padding: 5px 50px; */
+    /* margin: 15px 58px; */
+    background-color: rgba(236, 171, 29, 0.884);
+}
+
+.nav-item{
+    background-color: rgba(149, 20, 175, 0.884);
+    border-radius: 10px;
+    margin: 3px;
+}.nav-item:hover{
+    background-color: rgb(194, 160, 226);
+}
+.nav-link{
+    color: black;
+}
+
+#list-h2{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(236, 170, 29, 0.884);
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#logo-pag{
+    max-width: 70px;
+    max-height: 70px;
+}
+
+#loader-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.oculto{
+    display: none;
+}
+
+
+#th-lista{
+    background-color: rgb(230, 140, 51);
+
+}
+
+#rdbPocion{
+    margin-left: 3px;
+}
+
+#label-promedio{
+    background-color: aliceblue;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#row-filtro-tipo{
+    background-color: rgba(236, 170, 29, 0.884);
+    padding-bottom: 10px;
+}
+
+#check-filtro{
+    margin-top: 15px;
+    background-color: rgba(236, 170, 29, 0.884);
+    padding-top: 2px;
+}
+
+#cards{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: -100px;
+}
+
+article{
+border: 3px solid black;
+background-color: rgba(207, 135, 26, 0.884);
+text-align: left;
+margin-bottom: 20px;
+}
+
+section>article>li{
+padding: 5px 100px;
+margin: 10px;
+}
+
+#footer-pag{
+    position: relative;
+    top: 750px; 
+    background-color: rgba(207, 135, 26, 0.884);
+    color: black;
+}
+
+td:hover{
+    background-color: grey;
+}
+
+@media screen and (max-width:1000px){
+    h1{
+      margin: 0;
+      padding: 0;
+      display: none;
+    }
+
+    ul{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    li{
+        margin: 15px;
+    }
+}
+
+@media screen and (max-width:710px){
+    #logo-pag{
+        display: none;
+    }
+}
